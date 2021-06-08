@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
 const fs = require('fs');
 
-const ourReadStream = fs.createReadStream(`${__dirname}/bigdata.txt`);
+const ourReadStream = fs.createReadStream(`${__dirname}/bigdata.txt`, 'utf-8');
 
-ourReadStream.on('data', (chunk) => {
-    console.log(chunk.toString());
+ourReadStream.on('data', (data) => {
+    console.log(data);
 });
