@@ -1,12 +1,11 @@
 /* eslint-disable prettier/prettier */
-
+const http = require('http');
 const fs = require('fs');
 
-const ourReadStream = fs.createReadStream(`${__dirname}/bigdata.txt`);
-const ourWriteStream = fs.createWriteStream(`${__dirname}/output.txt`);
+const server = http.createServer((req, res) => {
+    const myReadStream = fs.createReadStream(`${__dirname}/bigdata.txt`, 'utf8');
 
-// ourReadStream.on('data', (chunk) => {
-//     ourWriteStream.write(chunk);
-// });
+    myReadStream.pipe(res);
+});
 
-ourReadStream.pipe(ourWriteStream);
+server.listen(3000);
