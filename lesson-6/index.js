@@ -1,9 +1,10 @@
 /* eslint-disable prettier/prettier */
 
-// const fs = require('fs');
+const fs = require('fs');
 
-// const ourReadStream = fs.createReadStream(`${__dirname}/bigdata.txt`, 'utf-8');
+const ourReadStream = fs.createReadStream(`${__dirname}/bigdata.txt`);
+const ourWriteStream = fs.createWriteStream(`${__dirname}/output.txt`);
 
-// ourReadStream.on('data', (data) => {
-//     console.log(data);
-// });
+ourReadStream.on('data', (chunk) => {
+    ourWriteStream.write(chunk);
+});
